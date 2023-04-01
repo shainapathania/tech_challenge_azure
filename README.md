@@ -46,11 +46,11 @@ Benifits of using Azure resource graph query.
 
 * **Flexibility**: Resource Graph queries are flexible and powerful, allowing you to query and explore resources across multiple subscriptions, resource groups, and regions with a single query.
 
-**Cost-Effective**: Azure Resource Graph queries can help you optimize your resource usage by identifying underutilized or overprovisioned resources, allowing you to make informed decisions about resource allocation and cost management.
+* **Cost-Effective**: Azure Resource Graph queries can help you optimize your resource usage by identifying underutilized or overprovisioned resources, allowing you to make informed decisions about resource allocation and cost management.
 
-**Integration**: Resource Graph can be integrated with Azure Policy and Azure Security Center, enabling you to create policies and security recommendations based on the results of Resource Graph queries.
+* **Integration**: Resource Graph can be integrated with Azure Policy and Azure Security Center, enabling you to create policies and security recommendations based on the results of Resource Graph queries.
 
-**Customization**: You can create custom Resource Graph queries to fit your specific needs, allowing you to explore and analyze your resources in ways that are not possible with ARM.
+* **Customization**: You can create custom Resource Graph queries to fit your specific needs, allowing you to explore and analyze your resources in ways that are not possible with ARM.
 
 --
 **Script Functionality:**
@@ -76,11 +76,4 @@ Benifits of using Azure resource graph query.
         * For above list we will loop through the object which is in form of dictionary or key-value pair.
         * once loop reaches to final iteration of key, it returns value for that key in nested object 
     
-
-
-
-
-
-
-
 
