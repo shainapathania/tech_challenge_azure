@@ -1,0 +1,62 @@
+####################################################################
+# Version:                  v1.0
+# Description:              This scripts gets the metadata for Azure VMs in JSON format(Multi subscription Environment)
+#                           
+# Required Parameters:      Either use SPN or connect to Azure Portal using Azure Cli. 
+#                           Also,need Subscription ID, Resource Group Name and VM name to execute the script
+# Created By:               Ankaj Thakur (01-04-2023)
+
+# Connect to your Azure account
+Connect-AzAccount
+
+#In case of Multi subscription environment you have to get enter this vaule.
+# else you could you Get-Context to fetch the subscription ID if is single subcription
+$SubscriptionId = Read-Host "Enter your subscription ID: "
+
+# Validate that the subscription ID is not null or empty
+if ([string]::IsNullOrEmpty($SubscriptionId)) {
+    Write-Host "Subscription ID is required."
+    return
+}
+
+#Enter Mandatory parameter resource group Name 
+$rgName = Read-Host "Enter the Resource Group Name"
+
+# Validate that the subscription ID is not null or empty
+if ([string]::IsNullOrEmpty($rgName) ) {
+    Write-Host "Resource Group is required."
+   }
+
+#Enter Mandatory parameter VM name
+$vmName = Read-Host "Enter your VM Name: "
+
+
+# Validate that the subscription ID is not null or empty
+if ([string]::IsNullOrEmpty($vmName)) {
+    Write-Host " VM Name is required."
+    return
+}
+
+
+# Set the subscription context
+Set-AzContext -SubscriptionId $SubscriptionId
+
+# Define the Resource Graph query to retrieve the metadata for an Azure virtual machine
+$query = @"
+    resources
+    | where type =~ 'Microsoft.Compute/virtualMachines'
+    | where name =~ '$vmName'
+    | where resourceGroup =~ '$rgName'
+    | extend hardwareProfile = properties.hardwareProfile,
+             storageProfile = properties.storageProfile,
+             networkProfile = properties.networkProfile
+    | project id, name, type, location, tags, plan, hardwareProfile, storageProfile, networkProfile, provisioningState
+"@
+
+# Execute the Resource Graph query 
+$output = Search-AzGraph -Query $query
+
+#convert the output to JSON format
+$jsonMetadata = ConvertTo-Json -InputObject $output -Depth 100 
+
+Write-Output $jsonMetadata

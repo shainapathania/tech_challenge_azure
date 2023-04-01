@@ -1,0 +1,10 @@
+**/ThreeTierSetup/.terraform/*
+
+*/ThreeTierSetup/.tfstate
+*/ThreeTierSetup/.tfstate.*
+
+*/ThreeTierSetup/tfplan
+
+*/ThreeTierSetup/.terraform.lock.hcl
+
+/ThreeTierSetup/.gitignore
