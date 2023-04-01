@@ -6,6 +6,8 @@ This respository contains solution to Azure Cloud Technical Challenges.
 Here in first challenge Terraform creates 3-tier architecture in Azure Platform . I have used below architecture diagram to implement it.
 
 Architecture diagram:
+
+
 ![image](https://user-images.githubusercontent.com/62846579/229301643-f2cd0880-cc78-4cfd-85ee-8e901be38678.png)
 
 **Note**** : This setup uses only http connection due to non-availabilty of SSL certificate. Also uses PIP instead of DNS Names.
@@ -18,17 +20,17 @@ Architecture diagram:
 * App service settings and SQL Azure connection string can be stored in Keyvault.
 * No app code is deployed using these
 
-What Azure Resource will be created by Terraform :
-* Resource group --> rg_tech_challenge_cus
-* Vnet  -- > vnet-01-cus-tc
-* Subnet --> Subnet-01
-* App Service Plan --> tech_challenge_asp
-* App service  --> tech-challenge-as
-* Application Gateway --> tech_challenge_appgwy_cus
-* Public IP --> tech_challenge_appgwy_cus-pip
-* keyvault --> tech-challenge-cus
-* SQL DB Server --> tech-challenge-db-server
-* SQL DB --> tech-challenge-db
+      What Azure Resource will be created by Terraform :
+      * Resource group --> rg_tech_challenge_cus
+      * Vnet  -- > vnet-01-cus-tc
+      * Subnet --> Subnet-01
+      * App Service Plan --> tech_challenge_asp
+      * App service  --> tech-challenge-as
+      * Application Gateway --> tech_challenge_appgwy_cus
+      * Public IP --> tech_challenge_appgwy_cus-pip
+      * keyvault --> tech-challenge-cus
+      * SQL DB Server --> tech-challenge-db-server
+      * SQL DB --> tech-challenge-db
 
 ---------------------------------------------------------------------
 
@@ -52,13 +54,14 @@ Benifits of using Azure resource graph query.
 
 --
 **Script Functionality:**
-  **Pre-requisite: **Azure Resource Graph Module, Az Cli module, Powershell version >= 5.1
-  **Required Parameters: ** Subscription ID, Resource Group Name and VM Name
-  **It requires user to sign in to Azure Portal alternatively you can use Service Pricipal.
+
+    Pre-requisite: Azure Resource Graph Module, Az Cli module, Powershell version >= 5.1
+    Required Parameters: ** Subscription ID, Resource Group Name and VM Name
+     **It requires user to sign in to Azure Portal alternatively you can use Service Pricipal.
   
-  * Once users are logged in through connect-AzAccount command, script with Prompt for subcription ID, Resource group Name and VM name(these should be non NULL and       non empty values as it has validation for it) 
-  * Based on Parameters it fetch the metadata of VMs using Azure resource graph query.
-  * Then it convert result to JSON format.
+     * Once users are logged in through connect-AzAccount command, script with Prompt for subcription ID, Resource group Name and VM name(these should be non NULL and       non empty values as it has validation for it) 
+     * Based on Parameters it fetch the metadata of VMs using Azure resource graph query.
+    * Then it convert result to JSON format.
 
 
 ----------------------------------------------------------------------
